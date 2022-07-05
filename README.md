@@ -135,3 +135,15 @@ Please see the [contribution guidelines](https://github.com/larsrollik/templatep
 
 ## License
 This software is released under the **[BSD 3-Clause License](https://github.com/larsrollik/templatepy/blob/main/LICENSE)**
+
+
+```shell
+wget -q -O tmp.zip http://dist.sensapex.com/misc/um-sdk/latest/umsdk-1_022-src.zip \
+    && unzip tmp.zip \
+    && rm tmp.zip \
+    && cd umsdk-1_022/src/lib/ \
+    && make -f Makefile.linux
+    
+sudo make -f Makefile.linux install
+echo $PWD
+```
