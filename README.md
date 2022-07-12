@@ -52,6 +52,7 @@ This is a meta-API for the Sensapex Python API, which is in turn a binding for t
 - [sensapex-py] package that can be installed from [sensapex-py] or via `pip install sensapex`
 - [umsdk] library
 - numpy
+- pyserial
 
 ## Contributing
 Contributions are very welcome!
