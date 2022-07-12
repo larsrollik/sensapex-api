@@ -32,7 +32,7 @@
 # sensapex-api
 Meta-API for Sensapex Manipulators from uMx family.
 ---
-**Version: "0.0.2.dev0"**
+**Version: "0.0.3.dev0"**
 
 This is a meta-API for the Sensapex Python API, which is in turn a binding for the underlying C library.
 
