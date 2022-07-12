@@ -1,4 +1,3 @@
-# API wrapper for Sensapex manipulator
 import logging
 
 import numpy as np
@@ -20,7 +19,7 @@ def get_device_by_id(device_id=None, library_path: str = None):
 
 
 class SensapexManipulator:
-    """
+    """Meta wrapper for Sensapex manipulator API
 
     device methods for manipulators:
         dev_id
@@ -55,6 +54,12 @@ class SensapexManipulator:
         library_path: str = "/usr/lib",
         default_move_speed: int = 5,
     ):
+        """
+
+        :param device_id:
+        :param library_path:
+        :param default_move_speed:
+        """
         super(SensapexManipulator, self).__init__()
         logging.debug(
             f"Initialising SensapexManipulator object for device={device_id}. "
@@ -71,7 +76,12 @@ class SensapexManipulator:
 
     @property
     def is_busy(self):
-        return self.device.is_busy()
+        """Returns if manipulator is busy"""
+        is_busy = self.device.is_busy()
+        logging.debug(
+            f"Manipulator reports to be: {'busy' if is_busy else 'ready'} ({is_busy})"
+        )
+        return is_busy
 
     @property
     def position(self):
@@ -100,7 +110,9 @@ class SensapexManipulator:
             if self._relative_zero is not None
             else self._relative_zero
         )
-        logging.debug(f"Setting relative zero from->to: {curr_zero} -> {pos.tolist()}")
+        logging.debug(
+            f"Setting relative zero from->to: {curr_zero} -> {pos.tolist()}"
+        )
         self._relative_zero = pos
 
     def set_relative_zero_all(self):
@@ -157,6 +169,7 @@ class SensapexManipulator:
 
         # https://github.com/sensapex/sensapex-py/blob/bc715130ca1c64dfcaa6a93ce0d5c31bdadd732a/sensapex/sensapex.py#L166
         assert len(position) == self.device.n_axes()
+
         # https://github.com/sensapex/sensapex-py/blob/bc715130ca1c64dfcaa6a93ce0d5c31bdadd732a/sensapex/sensapex.py#L165
         assert speed >= 1
 
@@ -208,24 +221,3 @@ class SensapexManipulator:
         self.set_axis_position(
             axis=axis, position=new_axis_position, speed=speed, **kwargs
         )
-
-
-"""
-import logging
-logging.getLogger().setLevel("DEBUG")
-
-def print_positions(s):
-    print("origin  ", s._relative_zero)
-    print("position", s.position)
-    print("relative", s.relative_zero)
-
-s = SensapexManipulator(device_id=1)
-s.set_relative_zero_axis(-1)
-
-# s.set_relative_zero_all()
-
-print_positions(s)
-s.set_axis_position_relative(-1, -2000, 500)
-print_positions(s)
-
-"""
