@@ -32,13 +32,8 @@
 # sensapex-api
 Meta-API for Sensapex Manipulators from uMx family.
 ---
-**Version: "0.0.3.dev0"**
 
 This is a meta-API for the Sensapex Python API, which is in turn a binding for the underlying C library.
-
-See underlying library and sources from Sensapex here:
-- [umsdk] library
-- [sensapex-py]
 
 ## Functionality
 - Set relative zero position for one or all axes
@@ -56,6 +51,7 @@ See underlying library and sources from Sensapex here:
 ## Dependencies
 - [sensapex-py] package that can be installed from [sensapex-py] or via `pip install sensapex`
 - [umsdk] library
+- numpy
 
 ## Contributing
 Contributions are very welcome!
@@ -65,3 +61,6 @@ Please see the [contribution guidelines](https://github.com/larsrollik/templatep
 This software is released under the **[BSD 3-Clause License](https://github.com/larsrollik/templatepy/blob/main/LICENSE)**.
 
 This code is an abstraction layer on top of the MIT-licensed [sensapex-py] and the [umsdk].
+
+---
+**Version: "0.0.1.dev0"**
