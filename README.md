@@ -63,4 +63,4 @@ This software is released under the **[BSD 3-Clause License](https://github.com/
 This code is an abstraction layer on top of the MIT-licensed [sensapex-py] and the [umsdk].
 
 ---
-**Version: "0.0.1.dev1"**
+**Version: "0.0.1"**
