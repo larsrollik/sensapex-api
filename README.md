@@ -56,10 +56,10 @@ This is a meta-API for the Sensapex Python API, which is in turn a binding for t
 
 ## Contributing
 Contributions are very welcome!
-Please see the [contribution guidelines](https://github.com/larsrollik/templatepy/blob/main/CONTRIBUTING.md) or check out the [issues](https://github.com/larsrollik/templatepy/issues)
+Please see the [contribution guidelines](https://github.com/larsrollik/sensapex-api/blob/main/CONTRIBUTING.md) or check out the [issues](https://github.com/larsrollik/sensapex-api/issues)
 
 ## License
-This software is released under the **[BSD 3-Clause License](https://github.com/larsrollik/templatepy/blob/main/LICENSE)**.
+This software is released under the **[BSD 3-Clause License](https://github.com/larsrollik/sensapex-api/blob/main/LICENSE)**.
 
 This code is an abstraction layer on top of the MIT-licensed [sensapex-py] and the [umsdk].
 
