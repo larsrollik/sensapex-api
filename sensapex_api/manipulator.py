@@ -76,25 +76,14 @@ class SensapexManipulator:
         self.default_move_speed = default_move_speed
 
     def __repr__(self):
-        var = ""
-        self_vars = vars(self)
-
-        pos_str = ["position", "relative_zero"]
-        pad = np.max([len(k) for k in list(self_vars.keys()) + pos_str])
-        for k, v in self_vars.items():
+        info = self.get_device_state()
+        text = ""
+        pad = np.max([len(k) for k in list(info.keys())])
+        for k, v in info.items():
             _pad = pad - len(k)
-            var += f"\n{k} {' '*_pad}: {v}"
+            text += f"\n{k} {' ' * _pad}: {v}"
 
-        _pad = pad - len("position")
-        position = f"position {' '*_pad}: {self.position.tolist()}"
-
-        _pad = pad - len("relative_zero")
-        relative_position = f"relative_zero {' ' * _pad}: {self.relative_zero.tolist() if self.relative_zero is not None else []}"
-
-        position = indent(position, prefix=" " * 2)
-        relative_position = indent(relative_position, prefix=" " * 2)
-
-        return f"""{self.__class__.__name__}{indent(var, prefix=" " * 2)}\n{position}\n{relative_position}\n"""
+        return f"""{self.__class__.__name__}{indent(text, prefix=" " * 2)}\n"""
 
     @property
     def is_busy(self):
@@ -157,7 +146,9 @@ class SensapexManipulator:
             "is_busy": self.device.is_busy(),
             "n_axes": self.device.n_axes(),
             "position": self.position.tolist(),
-            "relative_position": self.relative_zero.tolist(),
+            "relative_position": self.relative_zero.tolist()
+            if self.relative_zero is not None
+            else [],
             "broadcast_address": self.device.ump.broadcast_address,
             "firmware_version": self.device.ump.get_firmware_version(self.id),
         }
