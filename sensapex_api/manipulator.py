@@ -121,7 +121,9 @@ class SensapexManipulator:
             if self._relative_zero is not None
             else self._relative_zero
         )
-        logging.debug(f"Setting relative zero from->to: {curr_zero} -> {pos.tolist()}")
+        logging.debug(
+            f"Setting relative zero from->to: {curr_zero} -> {pos.tolist()}"
+        )
         self._relative_zero = pos
 
     def set_relative_zero_all(self):
