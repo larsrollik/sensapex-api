@@ -1,4 +1,5 @@
 import logging
+from textwrap import indent
 
 import numpy as np
 from sensapex import UMP
@@ -74,6 +75,27 @@ class SensapexManipulator:
         assert 1 <= default_move_speed < np.inf
         self.default_move_speed = default_move_speed
 
+    def __repr__(self):
+        var = ""
+        self_vars = vars(self)
+
+        pos_str = ["position", "relative_zero"]
+        pad = np.max([len(k) for k in list(self_vars.keys()) + pos_str])
+        for k, v in self_vars.items():
+            _pad = pad - len(k)
+            var += f"\n{k} {' '*_pad}: {v}"
+
+        _pad = pad - len("position")
+        position = f"position {' '*_pad}: {self.position.tolist()}"
+
+        _pad = pad - len("relative_zero")
+        relative_position = f"relative_zero {' ' * _pad}: {self.relative_zero.tolist() if self.relative_zero is not None else []}"
+
+        position = indent(position, prefix=" " * 2)
+        relative_position = indent(relative_position, prefix=" " * 2)
+
+        return f"""{self.__class__.__name__}{indent(var, prefix=" " * 2)}\n{position}\n{relative_position}\n"""
+
     @property
     def is_busy(self):
         """Returns if manipulator is busy"""
@@ -110,9 +132,7 @@ class SensapexManipulator:
             if self._relative_zero is not None
             else self._relative_zero
         )
-        logging.debug(
-            f"Setting relative zero from->to: {curr_zero} -> {pos.tolist()}"
-        )
+        logging.debug(f"Setting relative zero from->to: {curr_zero} -> {pos.tolist()}")
         self._relative_zero = pos
 
     def set_relative_zero_all(self):

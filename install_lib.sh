@@ -1,5 +1,5 @@
 #!/bin/sh
-wget -q -O tmp.zip http://dist.sensapex.com/misc/um-sdk/latest/umsdk-1_022-src.zip \
+wget -q -O tmp.zip http://dist.sensapex.com/misc/um-sdk/archive/umsdk-1_022-src.zip \
     && unzip tmp.zip \
     && rm tmp.zip
 

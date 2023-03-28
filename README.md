@@ -53,6 +53,10 @@ See `examples` folder for usage of the relative positioning on one or all axes.
 3. Install sensapex UM SDK library
    1. Follow method in original repo: [umsdk] library
    2. or use version of `install_lib.sh` script (in this repo)
+4. Set up a network interface with a static IP address ([see here](https://www.sensapex.com/files/uploads/2020/09/PC-Connection-Quick-Guide-v10-1.pdf))
+   1. IP address: `169.254.100.100`, subnet mask: `255.255.0.0`
+5. Connect manipulator
+
 
 ## Dependencies
 - [sensapex-py] package that can be installed from [sensapex-py] or via `pip install sensapex`

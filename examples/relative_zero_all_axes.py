@@ -14,9 +14,18 @@ def print_positions(s):
 
 if __name__ == "__main__":
     s = SensapexManipulator(device_id=1)
+    print(s)
     s.set_relative_zero_all()
+    print(s)
 
     print_positions(s)
     s.set_axis_position_relative(-1, -2000, 500)
     time.sleep(5)
     print_positions(s)
+
+    # while True:
+    #     try:
+    #         print(s)
+    #         time.sleep(1)
+    #     except KeyboardInterrupt:
+    #         break
