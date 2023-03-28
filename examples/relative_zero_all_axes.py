@@ -18,10 +18,10 @@ if __name__ == "__main__":
     s.set_relative_zero_all()
     print(s)
 
-    print_positions(s)
+    print(s)
     s.set_axis_position_relative(-1, -2000, 500)
     time.sleep(5)
-    print_positions(s)
+    print(s)
 
     # while True:
     #     try:

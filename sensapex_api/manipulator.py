@@ -102,11 +102,19 @@ class SensapexManipulator:
         return np.asarray(current_position)
 
     @property
+    def origin(self):
+        return (
+            self._relative_zero
+            if self._relative_zero is not None
+            else np.array([])
+        )
+
+    @property
     def relative_zero(self):
         """Get relative position of all axes"""
         if self._relative_zero is None:
             logging.debug("No relative zero set")
-            return None
+            return np.array([])
 
         relative_zero = self.position - self._relative_zero
         logging.debug(f"Relative zero: {relative_zero.tolist()}")
@@ -148,6 +156,7 @@ class SensapexManipulator:
             "is_busy": self.device.is_busy(),
             "n_axes": self.device.n_axes(),
             "position": self.position.tolist(),
+            "origin": self.origin,
             "relative_position": self.relative_zero.tolist()
             if self.relative_zero is not None
             else [],
